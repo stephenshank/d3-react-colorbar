@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "d3-array": "^2.4.0",
     "d3-react-axis": "^0.0.2",
     "d3-scale": "^3.2.1",
     "react": "^16.12.0"

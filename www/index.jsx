@@ -17,19 +17,37 @@ function NavBar() {
   </Navbar>);
 }
 
-function ColorbarExample() {
+function Example(props) {
+  const border_style = {
+    border: "solid",
+    borderWidth:1,
+    borderColor: "LightGrey"
+  };
+  return (<div>
+    <svg width={100} height={500}>
+      {props.children}
+    </svg>
+  </div>)
+}
+
+function VerticalBarLeftAxisExample() {
   const scale = scaleLinear()
     .domain([0, 10])
     .range([0, 300]);
-  return (<svg width={100} height={500}>
-    <Colorbar scale={scale} translateX={50} translateY={50} />
-  </svg>)
+  return (<Example>
+    <Colorbar
+      scale={scale}
+      translateX={50}
+      translateY={50}
+      colorRange={['orange', 'purple']}
+    />
+  </Example>);
 }
 
 function Home() {
   return (<div>
     <h1>Home</h1>
-    <ColorbarExample />
+    <VerticalBarLeftAxisExample />
   </div>);
 }
 

@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "@babel/preset-react"
+  ],
+ "env": {
+    "test": {
+      "presets": [
+        "@babel/preset-env",
+      ]
+    },
+    "library": {
+      "plugins": [
+        "babel-plugin-convert-jsx-extension-to-js"
+      ]
+    }
+  }
+}

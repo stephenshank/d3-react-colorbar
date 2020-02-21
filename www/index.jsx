@@ -24,7 +24,11 @@ function Example(props) {
     borderColor: "LightGrey"
   };
   return (<div>
-    <svg width={100} height={500}>
+    <svg 
+      width={400}
+      height={400}
+      style={border_style}
+    >
       {props.children}
     </svg>
   </div>)
@@ -37,10 +41,27 @@ function VerticalBarLeftAxisExample() {
   return (<Example>
     <Colorbar
       scale={scale}
-      translateX={50}
+      translateX={30}
       translateY={50}
       colorRange={['orange', 'purple']}
     />
+    <rect x="55" y="50" width="300" height="300" fill="LightGrey" />
+  </Example>);
+}
+
+function VerticalBarRightAxisExample() {
+  const scale = scaleLinear()
+    .domain([0, 10])
+    .range([0, 300]);
+  return (<Example>
+    <Colorbar
+      scale={scale}
+      translateX={325}
+      translateY={50}
+      orientation="right"
+      id="vbra"
+    />
+    <rect x="20" y="50" width="300" height="300" fill="LightGrey" />
   </Example>);
 }
 
@@ -48,6 +69,7 @@ function Home() {
   return (<div>
     <h1>Home</h1>
     <VerticalBarLeftAxisExample />
+    <VerticalBarRightAxisExample />
   </div>);
 }
 

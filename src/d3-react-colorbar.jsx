@@ -1,6 +1,23 @@
 import React from "react";
 import { extent } from "d3-array";
-import { AxisLeft } from "d3-react-axis";
+import { AxisLeft, AxisRight } from "d3-react-axis";
+
+function Axis(props) {
+  const { orientation, direction } = props;
+  if(orientation == 'left' && direction == 'vertical') {
+    return (<AxisLeft
+      scale={props.scale}
+      transform='translate(-1, 0)'
+    />);
+  } else if (orientation == 'right' && direction == 'vertical') {
+    return (<AxisRight
+      scale={props.scale}
+      transform={`translate(${props.width}, 0)`}
+    />);
+  } else {
+    throw "Unknown orientation/direction combination!";
+  }
+}
 
 function Colorbar(props) {
   const { scale, colorRange } = props;
@@ -22,9 +39,11 @@ function Colorbar(props) {
       </linearGradient>
     </defs>
     <g transform={`translate(${props.translateX}, ${props.translateY})`}>
-      <AxisLeft
+      <Axis
         scale={props.scale}
-        transform='translate(-1, 0)'
+        direction={props.direction}
+        orientation={props.orientation}
+        width={props.width}
       />
       <rect
         fill={`url(#${props.id})`}
@@ -43,7 +62,9 @@ Colorbar.defaultProps = {
   width: 20,
   height: 300,
   colorRange: ["red", "blue"],
-  id: "colorbar-gradient"
+  id: "colorbar-gradient",
+  orientation: 'left',
+  direction: 'vertical'
 };
 
 export default Colorbar

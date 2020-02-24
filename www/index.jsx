@@ -49,6 +49,21 @@ function VerticalBarLeftAxisExample() {
   </Example>);
 }
 
+function VerticalBarLeftAxisDescendingScaleExample() {
+  const scale = scaleLinear()
+    .domain([0, 10])
+    .range([300, 0]);
+  return (<Example>
+    <Colorbar
+      scale={scale}
+      translateX={30}
+      translateY={50}
+      colorRange={['orange', 'purple']}
+    />
+    <rect x="55" y="50" width="300" height="300" fill="LightGrey" />
+  </Example>);
+}
+
 function VerticalBarRightAxisExample() {
   const scale = scaleLinear()
     .domain([0, 10])
@@ -70,6 +85,7 @@ function Home() {
     <h1>Home</h1>
     <VerticalBarLeftAxisExample />
     <VerticalBarRightAxisExample />
+    <VerticalBarLeftAxisDescendingScaleExample />
   </div>);
 }
 

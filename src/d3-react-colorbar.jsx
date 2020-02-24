@@ -1,5 +1,5 @@
 import React from "react";
-import { extent } from "d3-array";
+import { extent, max } from "d3-array";
 import { AxisLeft, AxisRight } from "d3-react-axis";
 
 function Axis(props) {
@@ -50,7 +50,7 @@ function Colorbar(props) {
         x={0}
         y={0}
         width={props.width}
-        height={props.scale.range()[1]}
+        height={max(props.scale.range())}
       />
     </g>
   </>);

@@ -1,11 +1,11 @@
 {
   "name": "d3-react-colorbar",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "./d3-react-colorbar.js",
   "license": "MIT",
   "dependencies": {
     "d3-array": "^2.4.0",
-    "d3-react-axis": "^0.0.2",
+    "d3-react-axis": "0.0.3",
     "d3-scale": "^3.2.1",
     "react": "^16.12.0"
   },
@@ -28,6 +28,8 @@
     "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
-    "develop": "npx webpack-dev-server --open"
+    "develop": "npx webpack-dev-server --open",
+    "library": "BABEL_ENV=library npx babel --out-dir lib src && cp package.json lib",
+    "yalc": "yarn library && cd lib && yalc push"
   }
 }
